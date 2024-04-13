@@ -22,7 +22,6 @@ ChartJS.register(
     Tooltip,
     Legend
 )
-
 const MyChartComponent = () => {
     const chartRef = useRef(null);
     const [tooltip, setTooltip] = useState({
@@ -32,7 +31,7 @@ const MyChartComponent = () => {
         date: '',
         value: '',
     });
-
+    console.log("=>(App.js:34) tooltip", tooltip);
     const datasets = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [
@@ -52,10 +51,7 @@ const MyChartComponent = () => {
             },
         ],
     };
-
-
     const options = {
-
         plugins: {
             tooltip: {
                 enabled: false,
@@ -72,6 +68,7 @@ const MyChartComponent = () => {
                     const newTooltipData = {
                         opacity: 1,
                         left: position.left + tooltipModel.caretX,
+
                         top: position.top + tooltipModel.caretY,
                         date: tooltipModel.dataPoints[0].label,
                         value: tooltipModel.dataPoints[0].formattedValue,
@@ -81,7 +78,6 @@ const MyChartComponent = () => {
             },
         },
     };
-
     return (
         <>
             <Line options={options} ref={chartRef} data={datasets}/>
@@ -91,7 +87,6 @@ const MyChartComponent = () => {
                 <div className='data'>
                     <p>{tooltip.date}</p>
                     <p>{tooltip.value}</p>
-
                 </div>
 
 
@@ -99,5 +94,4 @@ const MyChartComponent = () => {
         </>
     );
 };
-
 export default MyChartComponent;

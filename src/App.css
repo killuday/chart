@@ -3,6 +3,7 @@
   color: lightpink;
   width: 200px;
   border-radius: 12px;
+  position: absolute;
   padding:20px;
 }
 .data{
